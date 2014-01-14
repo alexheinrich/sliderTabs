@@ -212,13 +212,15 @@
 			// Panel arrows
 
 			// Mousehweel
-			$container.bind('mousewheel', function(event, delta, deltaX, deltaY) {
-			    if(delta > 0)
-			    	plugin.next();
-			   	else if(delta < 0)
-			   		plugin.prev();
-			   	return false;
-			});
+                        if(settings.mousewheel){
+                            $container.bind('mousewheel', function(event, delta, deltaX, deltaY) {
+                                if(delta > 0)
+                                    plugin.next();
+                                    else if(delta < 0)
+                                            plugin.prev();
+                                    return false;
+                            });
+                        }
 		}
 
 		/*
@@ -513,7 +515,7 @@
 				width += $(element).outerWidth(true);
 			});
 			// Set new width of $tabsList
-			$tabsList.width(width);
+			$tabsList.width(width+1);
 
 			// Update minMargin. Hide tab arrows if no overflow
 			if($tabsListContainer.width() < width && settings.tabArrows){
